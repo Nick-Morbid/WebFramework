@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    # 配置数据源信息（默认）
+    type: com.zaxxer.hikari.HikariDataSource
+    # 配置驱动
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/formwork?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+    username:
+    password:
+    hikari:
+      max-lifetime: 120000
+mybatis-plus:
+  # 配置mybatis-plus日志（可以显示出动态生成的sql语句）
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 全局主键递增策略
+      id-type: none
+  # 扫描java bean的包，这样，在xml文件就可以直接使用类的名称作为类的别名了！
+  type-aliases-package: com.system.formwork.entity.pojo
+  # 枚举类所在包扫描（该配置+枚举类中的注解，可以实现枚举类的自动映射）
+  type-enums-package: com.system.formwork.constant.impl
+  # 自定义类型处理器包扫描
+  type-handlers-package: com.system.formwork.typehandler
