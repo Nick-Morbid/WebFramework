@@ -1,14 +1,14 @@
 package com.system.formwork.security;
 
-import com.system.formwork.util.JsonUtil;
-import com.system.formwork.properties.JwtProperties;
 import com.system.formwork.entity.pojo.User;
 import com.system.formwork.entity.vo.Result;
 import com.system.formwork.entity.vo.UserVo;
-import com.system.formwork.service.UserService;
+import com.system.formwork.mapper.UserMapper;
+import com.system.formwork.mapstruct.UserConvertor;
+import com.system.formwork.properties.JwtProperties;
+import com.system.formwork.util.JsonUtil;
 import com.system.formwork.util.JwtTokenUtil;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -33,15 +33,16 @@ public class JwtAuthenticationSuccessHandler implements AuthenticationSuccessHan
     private JwtTokenUtil jwtTokenUtil;
     @Resource
     private JwtProperties jwtProperties;
-    @Autowired
-    private UserService userService;
+    @Resource
+    private UserMapper userMapper;
+    @Resource
+    private UserConvertor userConvertor;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException {
         String userId = authentication.getName();
-        User user = userService.getById(userId);
-        UserVo userVo = new UserVo();
-        BeanUtils.copyProperties(user,userVo);
+        User user = userMapper.selectById(userId);
+        UserVo userVo = userConvertor.UserToUserVo(user);
         Result<?> result = Result.success(userVo);
 
         httpServletResponse.setContentType("text/json;charset=utf-8");

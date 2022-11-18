@@ -21,28 +21,5 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @org.springframework.boot.test.context.SpringBootTest(classes = SystemStarter.class)
 public class TestMapper {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private IdUtil idUtil;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
-    @Test
-    public void save(){
-        userService.save(new User().setId(idUtil.getId()).setName("Jerry").setPassword(passwordEncoder.encode("123456")).setRole(Role.NORMAL));
-    }
-
-    @Autowired
-    private EnumUtil enumUtil;
-
-    @Resource
-    private UserMapper userMapper;
-
-    @Test
-    public void get(){
-//        System.out.println(enumUtil.getEnumByCode(Role.class, 0));
-        System.out.println(userMapper.selectById("26619226"));
-        System.out.println(passwordEncoder.matches("1234567", userService.getById("25341815").getPassword()));
-    }
 }

@@ -18,4 +18,6 @@ public interface UserConvertor {
             @Mapping(source = "role.msg",target = "roleName")
     })
     UserVo UserToUserVo(User user);
+
+
 }

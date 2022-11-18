@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://nicklorry.top:3306/formwork</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="framework@nicklorry.top" uuid="cc0828ad-9e11-4cf1-b6cd-6faf2b9db5df">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://nicklorry.top:3306/framework</jdbc-url>
+    </data-source>
   </component>
 </project>
