@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Service" />
-        <module name="Entity" />
         <module name="Dao" />
         <module name="Web" />
         <module name="Common" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Entity" target="15" />
+    </bytecodeTargetLevel>
   </component>
 </project>

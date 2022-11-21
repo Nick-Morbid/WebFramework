@@ -8,5 +8,5 @@ public interface UserMapper {
 
     User selectById(String id);
 
-    void insertUser(User user1);
+    void insertUser(User user);
 }

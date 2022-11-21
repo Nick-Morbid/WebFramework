@@ -1,6 +1,6 @@
 package com.system.formwork.util;
 
-import com.system.formwork.constant.CommonEnum;
+import com.system.formwork.entity.constant.CommonEnum;
 import org.springframework.stereotype.Component;
 
 /*

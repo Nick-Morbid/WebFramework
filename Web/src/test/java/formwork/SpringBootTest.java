@@ -1,24 +1,26 @@
 package formwork;
 
 import com.system.formwork.SystemStarter;
-import com.system.formwork.constant.impl.Role;
-import com.system.formwork.entity.pojo.User;
-import com.system.formwork.mapstruct.UserConvertor;
+import com.system.formwork.security.encoder.PasswordEncoder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @org.springframework.boot.test.context.SpringBootTest(classes = SystemStarter.class)
 public class SpringBootTest {
-
-    @Autowired
-    private UserConvertor userConvertor;
+    @Resource(name = "PasswordEncoder")
+    private PasswordEncoder passwordEncoder;
 
     @Test
-    public void test01(){
-        System.out.println(userConvertor.UserToUserVo(new User().setId("123").setName("Nick").setRole(Role.ADMIN)));
-    }
+    public void testPasswordEncoder(){
+        String verity = "123456";
+        String encode = passwordEncoder.encode(verity);
+        System.out.println(encode);
+        System.out.println(passwordEncoder.verity(verity, encode));
+        System.out.println(passwordEncoder.verity("123456789", encode));
 
+    }
 }
